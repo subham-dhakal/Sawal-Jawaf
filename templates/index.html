@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+  {% block content %}
+	<table class="table">
+    <thead class="thead thead-dark">
+    <tr>
+    	<th><h5>Boards</h5></th>
+    	<th><h5>Topic</h5></th>
+    	<th><h5>Posts</h5></th>
+    	<th><h5>Last Post</h5></th>
+      </tr>
+    </thead>
+
+    <tbody>
+    {% for board_list in boards %}	
+      {# iterating all the  boards#}
+    <tr>
+
+   <td>
+    <a href="{% url 'board_topics' board_list.pk %}"><b>{{ board_list.name }}</b></a><br>
+   	<small>{{board_list.description}}</small>
+   </td>
+
+	<td>0</td>
+  <td>0</td>
+  <td></td>
+       </tr>
+     {% endfor %}
+       </tbody>  
+  
+ </table>
+ {% endblock %}
+

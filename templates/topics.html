@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}{{b_detail.name}}-{{block.super}}{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+<a href="{% url 'new_topic' b_detail.pk %}" class="btn btn-primary">New Topic</a>
+ </div> 
+  <table class="table">
+    <thead class="thead thead-dark">
+    <tr>
+    	<th><h5>Topic</h5></th>
+    	<th><h5>Starter</h5></th>
+    	<th><h5>Replies</h5></th>
+    	<th><h5>Views</h5></th>
+      <th><h5>Last Update</h5></th>
+      </tr>
+    </thead>
+
+    <tbody>
+    {% for topic in b_detail.topics.all %}	
+    <tr>
+
+   <td>
+    <b>{{ topic.subject }}</b><br>
+   </td>
+
+	<td>{{topic.starter}}</td>
+  <td></td>
+  <td></td>
+  <td>{{topic.last_updated}}</td>
+       </tr>
+     {% endfor %}
+       </tbody>  
+  
+ </table>
+
+
+
+{% endblock %}
+

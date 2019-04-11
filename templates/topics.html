@@ -3,6 +3,7 @@
 {% block title %}{{b_detail.name}}-{{block.super}}{% endblock %}
 
 {% block content %}
+<br>
 <div class="mb-4">
 <a href="{% url 'new_topic' b_detail.pk %}" class="btn btn-primary">New Topic</a>
  </div> 
@@ -20,22 +21,15 @@
     <tbody>
     {% for topic in b_detail.topics.all %}	
     <tr>
-
-   <td>
-    <b>{{ topic.subject }}</b><br>
-   </td>
-
-	<td>{{topic.starter}}</td>
-  <td></td>
-  <td></td>
-  <td>{{topic.last_updated}}</td>
-       </tr>
-     {% endfor %}
-       </tbody>  
-  
+    <td><a href="{% url 'topic_posts' b_detail.pk topic.pk %}">{{ topic.subject }}</a></td>
+    <td>{{ topic.starter.username }}</td>
+    <td>0</td>
+    <td>0</td>  
+    <td>{{ topic.last_updated }}</td>
+  </tr>
+{% endfor %}
+       </tbody>    
  </table>
-
-
 
 {% endblock %}
 

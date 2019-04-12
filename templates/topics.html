@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}{{b_detail.name}}-{{block.super}}{% endblock %}
 
 {% block content %}
@@ -30,6 +32,5 @@
 {% endfor %}
        </tbody>    
  </table>
-
 {% endblock %}
 

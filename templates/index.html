@@ -22,13 +22,30 @@
    	<small>{{board_list.description}}</small>
    </td>
 
-	<td>0</td>
-  <td>0</td>
-  <td></td>
-       </tr>
-     {% endfor %}
-       </tbody>  
-  
- </table>
- {% endblock %}
+	<td class="align-middle">
+            {{ board_list.get_posts_count }}
+          </td>
+          <td class="align-middle">
+            {{ board_list.topics.count }}
+          </td>
+          <td class="align-middle">
+          {% with post=board_list.get_last_post %}
+            {% if post %}
+    <small>
+      <a href="{% url 'topic_posts' board_list.pk post.topic.pk %}">
+        By {{ post.created_by.username }} at {{ post.created_at }}
+        </a>
+      </small>
+    {% else %}
+        <small class="text-muted">
+          <em>No posts yet.</em>
+        </small>
+      {% endif %}
+    {% endwith %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
 
